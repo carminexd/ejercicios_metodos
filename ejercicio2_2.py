@@ -2,10 +2,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Definir la función que va introducirse en
-# el esquema del metodo de biseccion
+
 def f(x):
-    return x**3 - 4*x - 9
+    return np.exp(-x)-x
+
 
 # Algoritmo numerico del
 # Método de Bisección
@@ -43,12 +43,11 @@ def biseccion(a, b, tol=1e-5, max_iter=100):
 
     return iteraciones, errores
 
-# Parámetros iniciales
-# se introduce el intervalo [a, b]
-#a, b = 2, 3
-#a, b = 0, 1.5
-a, b = 2, 3
-iteraciones, errores = biseccion(a, b)
+
+a, b = 0, 1
+tol = 10**-5
+
+iteraciones, errores = biseccion(a, b, tol=tol)
 
 # Crear la figura
 fig, ax = plt.subplots(1, 2, figsize=(14, 5))
@@ -57,7 +56,7 @@ fig, ax = plt.subplots(1, 2, figsize=(14, 5))
 x = np.linspace(a - 1, b + 1, 400)
 y = f(x)
 
-ax[0].plot(x, y, label=r'$f(x) = x^3 - 4x - 9$ ', color='b')
+ax[0].plot(x, y, label=r'$  f(x) = e-x −x = 0$ ', color='b')
 ax[0].axhline(0, color='k', linestyle='--', linewidth=1)  # Línea en y=0
 ax[0].scatter(iteraciones, [f(c) for c in iteraciones], color='red', label='Iteraciones')
 ax[0].set_xlabel('x')
